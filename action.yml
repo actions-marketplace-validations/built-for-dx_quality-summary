@@ -1,0 +1,20 @@
+name: "PR Quality Status Summary"
+description: "Consolidate and report code quality check results (e.g., ESLint, TSC) directly to PR comments."
+author: "build-for-ex"
+branding:
+  icon: "check-circle"
+  color: "blue"
+
+inputs:
+  checks:
+    description: "Comma-separated list of check names to include in the summary (e.g. 'eslint, tsc')"
+    required: false
+    default: "eslint, tsc"
+  github_token:
+    description: "The GITHUB_TOKEN to fetch results and post comments"
+    required: true
+    default: ${{ github.token }}
+
+runs:
+  using: "node24"
+  main: "dist/index.js"
